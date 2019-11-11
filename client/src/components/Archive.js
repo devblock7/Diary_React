@@ -38,7 +38,7 @@ class Archive extends Component {
       <div className="container">
         <div className="jumbotron mt-5">
           <div className="col-sm-10 mx-auto">
-            <h1 className="text-center">Congratulations {this.state.first_name} your post has been added to datebase!</h1>
+            <h1 className="text-center">Congratulations {this.state.first_name} your post has been added to database!</h1>
           </div>
 
           </div></div>
