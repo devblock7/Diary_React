@@ -6,8 +6,8 @@ install and start mongoDB locally
 
 To start local backend server:
 $ npm install
-$ npm run start
+$ npm start
 
 To start webserver, go to client folder.
 $ npm install
-$ npm run start
+$ npm start
