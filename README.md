@@ -3,7 +3,6 @@ DataBase + BackEnd Server + FrontEnd
 
 Getting Started:
 install and start mongoDB locally
-create database diary
 
 To start local backend server:
 $ npm install
