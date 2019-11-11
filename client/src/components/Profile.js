@@ -15,7 +15,6 @@ class Profile extends Component {
       email: '',
       last_login_date: Date(),
       errors: {},
-      date: new Date(),
       description:'',
 
 }
@@ -32,9 +31,10 @@ this.onSubmit = this.onSubmit.bind(this)
       first_name: decoded.first_name,
       last_name: decoded.last_name,
       email: decoded.email,
-      last_login_date: decoded.last_login_date,
     })
   }
+
+
 
 
   onChangeDescription(e) {
@@ -52,22 +52,26 @@ this.onSubmit = this.onSubmit.bind(this)
 
      const newPost = {
        description: this.state.description,
-       data: this.state.date
+       data: this.state.date,
      }
     console.log(newPost);
 
      axios.post('http://localhost:5000/diarypost/add', newPost)
      .then(res=> console.log(res.data));
 
-       window.location = '/Archive';
+     window.location = '/Archive';
    }
 
   render() {
+
+    const divStyle = {
+  marginRight: '185px',
+};
     return (
       <div className="container">
         <div className="jumbotron mt-5">
           <div className="col-sm-10 mx-auto">
-            <h1 className="text-center">Hello {this.state.first_name} at your personal Diary</h1>
+            <h1 className="text-center">Hello {this.state.first_name} in your personal Diary</h1>
           </div>
 
           <table className="table col-md-6 mx-auto">
@@ -96,18 +100,20 @@ this.onSubmit = this.onSubmit.bind(this)
             <h3>Create New Log</h3>
             <form onSubmit={this.onSubmit}>
 
-              <div className="form-group">
-                <label>Description: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.description}
-                    onChange={this.onChangeDescription}
-                    />
+              <div className="form-group" rows="5">
+                <label>My notes: </label>
+
+          <textarea className="form-control"
+            required value={this.state.description}
+            onChange={this.onChangeDescription}
+            rows="7" id="comment">
+          </textarea>
+
               </div>
-              <div className="form-group">
-                <label>Date: </label>
+              <div className="form-group  text-right">
+                <label style={divStyle}>Set Date: </label>
                 <div>
+
                   <DatePicker
                     selected={this.state.date}
                     onChange={this.onChangeDate}
@@ -115,7 +121,7 @@ this.onSubmit = this.onSubmit.bind(this)
                 </div>
               </div>
 
-              <div className="form-group">
+              <div className="form-group text-right">
                 <input type="submit" value="Save Log" className="btn btn-primary" />
               </div>
             </form>
